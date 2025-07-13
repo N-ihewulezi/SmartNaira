@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 import plotly.express as px
 import openai
 
-# ✅ Page setup
+# Page setup
 st.set_page_config(
     page_title="SmartNaira: AI Expense Tracker",
     page_icon="💸",
@@ -14,7 +14,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ✅ Apply Theme from .streamlit/config.toml if present
+#  Apply Theme from .streamlit/config.toml
 client = OpenAI(api_key=st.secrets.get("sk-proj-aAvTD2KcFoLXfRn4pi-0x9_3js-"
                                 "XvI7_XVN5GKSbLBOyJOS2CzbGkg9cROqUOuUi22g4jMbCVsT3BlbkFJSx5oNuMtxzgVkydZCoPJwm26rOsORwbiB1h-"
                                 "ZJQewKuQKyPNFQvmpcwUONMMbv81x0eZI50jsA"))
@@ -27,9 +27,9 @@ try:
 except FileNotFoundError:
     df = pd.DataFrame(columns=["Date", "Amount", "Type", "Description", "Payment Mode", "Category"])
 
-# ✅ Add Entry
+#  Add Entry
 with st.sidebar:
-    st.header("💼 Add a New Entry")
+    st.header("Add a New Entry")
     with st.form("expense_form"):
         entry_date = st.date_input("Date", value=date.today())
         entry_type = st.selectbox("Type", ["Expense", "Income"])
@@ -49,10 +49,10 @@ with st.sidebar:
             }])
             df = pd.concat([df, new_entry], ignore_index=True)
             df.to_csv(DATA_FILE, index=False)
-            st.success(f"✅ Entry saved under '{category}'")
+            st.success(f"Entry saved under '{category}'")
 
-# ✅ Tabs
-tab1, tab2, tab3 = st.tabs(["🏠 Dashboard", "📊 Charts", "🤖 Chat Assistant"])
+# Tabs
+tab1, tab2, tab3 = st.tabs(["📈 Dashboard", "📊 Charts", "🤖 Chat Assistant"])
 
 # ===== Dashboard Tab =====
 with tab1:
@@ -141,4 +141,4 @@ st.sidebar.download_button("📥 Download CSV", data=df.to_csv(index=False), fil
 if st.sidebar.button("🗑️ Reset All Entries"):
     df = pd.DataFrame(columns=["Date", "Amount", "Type", "Description", "Payment Mode", "Category"])
     df.to_csv(DATA_FILE, index=False)
-    st.success("✅ All data has been cleared.")
+    st.success("All data has been cleared.")
