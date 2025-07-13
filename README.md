@@ -12,7 +12,7 @@
   - “What’s my biggest expense in June?”
 
 ## 🚀 Demo
-[Streamlit App Live Link](https://your-streamlit-app.streamlit.app)
+[Streamlit App Live Link](https://smartnaira-ni.streamlit.app/)
 
 ## 📦 Tech Stack
 - Python
