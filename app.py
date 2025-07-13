@@ -4,7 +4,7 @@ from datetime import date
 from categorizer import categorize_expense
 from sklearn.linear_model import LinearRegression
 import plotly.express as px
-import openai
+from openai import OpenAI
 
 # Page setup
 st.set_page_config(
