@@ -4,6 +4,7 @@ from datetime import date
 from categorizer import categorize_expense
 from sklearn.linear_model import LinearRegression
 import plotly.express as px
+import os
 from openai import OpenAI
 
 # Page setup
@@ -19,11 +20,12 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.title("💰 SmartNaira: AI-Powered Expense Tracker")
 
-DATA_FILE = "data.csv"
-try:
-    df = pd.read_csv(DATA_FILE)
-except FileNotFoundError:
+# Check if the file exists; if not, create an empty one
+if not os.path.exists(DATA_FILE):
     df = pd.DataFrame(columns=["Date", "Amount", "Type", "Description", "Payment Mode", "Category"])
+    df.to_csv(DATA_FILE, index=False)
+else:
+    df = pd.read_csv(DATA_FILE)
 
 #  Add Entry
 with st.sidebar:
