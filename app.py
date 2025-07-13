@@ -15,9 +15,7 @@ st.set_page_config(
 )
 
 #  Apply Theme from .streamlit/config.toml
-client = OpenAI(api_key=st.secrets.get("sk-proj-aAvTD2KcFoLXfRn4pi-0x9_3js-"
-                                "XvI7_XVN5GKSbLBOyJOS2CzbGkg9cROqUOuUi22g4jMbCVsT3BlbkFJSx5oNuMtxzgVkydZCoPJwm26rOsORwbiB1h-"
-                                "ZJQewKuQKyPNFQvmpcwUONMMbv81x0eZI50jsA"))
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.title("💰 SmartNaira: AI-Powered Expense Tracker")
 
